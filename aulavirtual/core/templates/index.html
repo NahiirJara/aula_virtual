@@ -8,11 +8,13 @@
 <body>
     <header>
         <h1> Bienvenid@ al Aula Virtual 2.0</h1>
+        <p>Usuario logueado como: <b>{{ nombre_usuario }}</p></b>
+        <p>Dia de la fecha: {{ fecha }}</p>
     </header>
     <nav>
         <ul>
-            <li><a href="http://localhost:8000/aula_virtual/">Home</a></li>
-            <li><a href="http://localhost:8000/aula_virtual/alumnos_listado">Listado de alumnos</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'alumnos_listado' %}">Listado de alumnos</a></li>
         </ul>
     </nav>
     <main></main>

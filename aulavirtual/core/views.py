@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from datetime import datetime
 
 # Create your views here.
 """
@@ -11,10 +12,27 @@ def index(request): #luego del def el nombre de la vista
         return HttpResponse('')       
 """
 def index(request):
-    return render(request, "index.html")
+    context = {
+        'nombre_usuario': 'Carlos Perez',
+        'fecha' : datetime.now()
+    }
+    return render(request, "index.html", context)
 
 def alumnos_listado(request):
-    return HttpResponse('Listado de alumnos:')
+    listado = [
+            'Carlos Lopez',
+            'Maria del Cerro',
+            'Juan Perez'
+        ]
+    context = {
+        'nombre_usuario': 'Carlos Perez',
+        'fecha': datetime.now(),
+        'es_instructor': True,
+        'cant_inscriptos': len(listado),
+        'listado_alumnos': listado
+    }
+    
+    return render(request, 'alumnos_listado.html', context)
 
 def alumno_detalle(request, nombre_alumno):
     return HttpResponse(
